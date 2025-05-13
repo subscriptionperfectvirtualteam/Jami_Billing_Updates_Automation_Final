@@ -1,0 +1,279 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RDN Fee Scraper Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/dashboard.css" rel="stylesheet">
+  <style>
+    /* We've removed the summary cards and match containers, so we'll
+       keep only the essential styles for the remaining elements */
+
+    /* Source styles */
+    .my-summary-source {
+      background-color: #d1e7dd;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #0f5132;
+    }
+
+    .updates-source {
+      background-color: #d1ecf1;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #055160;
+    }
+
+    .database-source {
+      background-color: #cfe2ff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #084298;
+      font-weight: bold;
+    }
+
+    /* Reference text styles */
+    .ref-text {
+      max-width: 300px;
+      overflow-wrap: break-word;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">RDN Fee Scraper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">New Scrape</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Recovery Database Network - Fee Scraper</h3>
+          </div>
+          <div class="card-body">
+            <!-- Add Case ID Form -->
+            <div class="row mb-4" id="case-id-form-container" style="display: none;">
+              <div class="col-md-6 offset-md-3">
+                <div class="card border-primary">
+                  <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Enter Case ID</h5>
+                  </div>
+                  <div class="card-body">
+                    <form id="caseIdForm">
+                      <div class="mb-3">
+                        <label for="caseId" class="form-label">Case ID</label>
+                        <input type="text" class="form-control" id="caseId" placeholder="Enter RDN case ID number" required="">
+                        <div class="form-text">Enter the RDN case ID you want to scrape.</div>
+                      </div>
+                      <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" id="startScrapeBtn" disabled=""><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting...</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status cards (initially hidden) -->
+            <div class="row" id="status-cards" style="display: flex;">
+              <div class="col-md-4">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Case ID</h5>
+                    <p class="card-text" id="case-id">2168975234</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Elapsed Time</h5>
+                    <p class="card-text timer" id="timer">00:03:04</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Status</h5>
+                    <p class="card-text" id="status"><span class="badge bg-success">Completed</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="category-tables-container mt-4"><div class="category-table-container predefined-category" id="category-flatbed-fees"><h3>Flatbed Fees</h3><div class="table-responsive"><table class="table table-hover category-table predefined-table"><thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Source</th><th>Reference</th></tr></thead><tbody><tr><td><span style="font-weight: bold;">25-05-01</span></td><td>$150.00</td><td><span class="badge bg-success">Approved</span></td><td><span class="tab-source my-summary-source">My Summary</span></td><td><div class="ref-text">DISCLAIMERS
+
+For Status: Repossessed
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...
+                            (more)</div></td></tr><tr><td><span style="font-weight: bold;">25-05-01</span></td><td>$150.00</td><td><span class="badge bg-success">Approved</span></td><td><span class="tab-source my-summary-source">My Summary</span></td><td><div class="ref-text">DISCLAIMERS
+
+For Status: Repossessed
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dollies were used.
+For Status: Impound
+- LENDER: Please provide transportation instructions once CR &amp; Pics are complete!</div></td></tr></tbody></table></div></div><div class="category-table-container keys-category" id="category-keys-fee"><h3>Keys Fee</h3><div class="table-responsive"><table class="table table-hover category-table keys-table"><thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Source</th><th>Reference</th></tr></thead><tbody><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">t"&gt;DISCLAIMERS
+
+For Status: Repossessed
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">RS<br>
+<br>
+For Status: Repossessed<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">er.<br>
+For Status: New from Client<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">ogin required.<br>
+For Status: Open<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">or Status: Repossessed
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">tatus: Repossessed<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">s: New from Client<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$150.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">&gt;
+For Status: Open<br>
+- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures showing that flatbed/dolli</div></td></tr><tr><td><span style="font-weight: bold;">05/13/2025</span></td><td>$75.00</td><td><span class="badge bg-warning">Likely</span></td><td><span class="tab-source updates-source">Updates</span></td><td><div class="ref-text">dt&gt;
+								  <dd><span class="update-text-black">$75 transport fee! </span></dd>
+							  	</div></td></tr></tbody></table></div></div><div class="category-table-container other-category" id="category-unknown-fee"><h3>Unknown Fee</h3><div class="table-responsive"><table class="table table-hover category-table other-table"><thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Source</th><th>Reference</th></tr></thead><tbody><tr><td><span style="font-weight: bold;">25-05-01</span></td><td>$75.00</td><td><span class="badge bg-success">Approved</span></td><td><span class="tab-source my-summary-source">My Summary</span></td><td><div class="ref-text">Details
+								  $75 transport fee!</div></td></tr><tr><td><span style="font-weight: bold;">25-05-01</span></td><td>$75.00</td><td><span class="badge bg-success">Approved</span></td><td><span class="tab-source my-summary-source">My Summary</span></td><td><div class="ref-text">$75 transport fee!</div></td></tr></tbody></table></div></div></div></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Database Fee Results section has been removed as it's redundant with other fee tables -->
+
+    <div class="row results-container" id="results-container" style="display: block;">
+      <div class="col-12 mb-4">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Process Log</h4>
+          </div>
+          <div class="card-body p-0">
+            <div id="log-container"><div class="log-info">Starting scrape for case ID: 2168975234</div><div class="log-info">[15:18:10] WebDriver created successfully</div><div class="log-info">[15:18:10] Navigating to login page...</div><div class="log-info">[15:18:13] Entering login credentials...</div><div class="log-info">[15:18:13] Logging in...</div><div class="log-info">[15:18:20] Login successful!</div><div class="log-info">[15:18:20] Login operation took: 10.087s</div><div class="log-info">[15:18:20] Navigating to case 2168975234...</div><div class="log-info">[15:18:23] Successfully navigated to case 2168975234</div><div class="log-info">[15:18:23] Extracting case information...</div><div class="log-info">[15:18:27] Attempting to extract case information using EXACT pattern match</div><div class="log-info">[15:18:27] Found client name using EXACT pattern: Primeritus- IBEAM</div><div class="log-info">[15:18:27] Found lien holder name using EXACT pattern: America's Car-Mart Loss Recovery Branch</div><div class="log-info">[15:18:27] Attempting to extract repo type using badge element</div><div class="log-info">[15:18:27] Found Involuntary Repo using specific badge-invol class</div><div class="log-info">[15:18:27] Extracted case information - Client: Primeritus- IBEAM, Lien Holder: America's Car-Mart Loss Recovery Branch, Repo Type: Involuntary Repo</div><div class="log-info">[15:18:27] Case information extraction took: 3.408s</div><div class="log-info">[15:18:27] Case information extracted: Client: Primeritus- IBEAM, Lien Holder: America's Car-Mart Loss Recovery Branch, Repo Type: Involuntary Repo</div><div class="log-info">[15:18:27] Scanning the page for key fee information...</div><div class="log-info">[15:18:27] Found 11 key fees in the page!</div><div class="log-info">[15:18:27] Key Fee 1: $150 - t"&gt;DISCLAIMERS
+
+For Status: Re...</div><div class="log-info">[15:18:27] Key Fee 2: $150 - RS&lt;br&gt;
+&lt;br&gt;
+For Status: Reposs...</div><div class="log-info">[15:18:27] Key Fee 3: $150 - er.&lt;br&gt;
+For Status: New from C...</div><div class="log-info">[15:18:27] Key Fee 4: $150 - ogin required.&lt;br&gt;
+For Status:...</div><div class="log-info">[15:18:27] Key Fee 5: $150 - or Status: Repossessed
+- Flatb...</div><div class="log-info">[15:18:27] Key Fee 6: $150 - tatus: Repossessed&lt;br&gt;
+- Flatb...</div><div class="log-info">[15:18:27] Key Fee 7: $150 - s: New from Client&lt;br&gt;
+- Flatb...</div><div class="log-info">[15:18:27] Key Fee 8: $150 - &gt;
+For Status: Open&lt;br&gt;
+- Flatb...</div><div class="log-info">[15:18:27] Key Fee 9: $0.00 - class="col"&gt;
+					&lt;dt&gt;Fee To C...</div><div class="log-info">[15:18:27] Key Fee 10: $0.00 - class="col"&gt;
+					 &lt;dt&gt;Damage&lt;...</div><div class="log-info">[15:18:27] Key Fee 11: $75 - dt&gt;
+								  &lt;dd&gt;&lt;span class=...</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $150 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $0.00 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $0.00 - Source: Case Page</div><div class="log-info">[15:18:27] Created key fee update: $75 - Source: Case Page</div><div class="log-info">[15:18:27] Starting automatic database fee lookup with case information...</div><div class="log-info">[15:18:27] Auto-fetching fee data from database using case information:</div><div class="log-info">[15:18:27] Client: Primeritus- IBEAM</div><div class="log-info">[15:18:27] Lienholder: America's Car-Mart Loss Recovery Branch</div><div class="log-info">[15:18:27] Repo Type: Involuntary Repo</div><div class="log-info">[15:18:27] Fetching fee data from Azure SQL Database...</div><div class="log-info">[15:18:30] Searching database with: Client=Primeritus- IBEAM, Lienholder=America's Car-Mart Loss Recovery Branch, FeeType=Involuntary Repo</div><div class="log-info">[15:18:30] Executing ORIGINAL query with parameters: '%Primeritus- IBEAM%' (str), '%America's Car-Mart Loss Recovery Branch%' (str), '%Involuntary Repo%' (str)</div><div class="log-info">[15:18:30] Searching database for: Client='Primeritus- IBEAM', Lienholder='America's Car-Mart Loss Recovery Branch', FeeType='Involuntary Repo'</div><div class="log-info">[15:18:30] No results found with lienholder 'America's Car-Mart Loss Recovery Branch'. Trying with 'Standard' lienholder...</div><div class="log-info">[15:18:31] Found 'Standard' lienholder with ID: 201</div><div class="log-info">[15:18:31] Executing FALLBACK STANDARD query with parameters: 201 (int), '%Primeritus- IBEAM%' (str), '%Involuntary Repo%' (str)</div><div class="log-info">[15:18:31] Falling back to 'Standard' lienholder with parameters: Client='Primeritus- IBEAM', FeeType='Involuntary Repo'</div><div class="log-info">[15:18:31] Found 1 records with 'Standard' lienholder</div><div class="log-warning"><strong>⚠️</strong> No specific fee data found for lienholder 'America's Car-Mart Loss Recovery Branch'. Using Standard fee amounts instead.</div><div class="log-info">[15:18:31] Successfully fetched 1 total fee records from database</div><div class="log-info">[15:18:31] Successfully fetched 1 matching fee records from database</div><div class="log-info">[15:18:31] Fee 1: Involuntary Repo - $315.00 (Primeritus- IBEAM)</div><div class="log-warning"><strong>Database Lookup Note:</strong> Lienholder 'America's Car-Mart Loss Recovery Branch' not found. Using Standard amount instead.</div><div class="log-info"><strong>Database Search:</strong> Found 1 matching fees for client=Primeritus- IBEAM, lienholder=America's Car-Mart Loss Recovery Branch, fee_type=Involuntary Repo</div><div class="log-info">[15:18:31] Auto database lookup complete - found 1 matching fee records</div><div class="log-info">[15:18:31] Navigate to case operation took: 10.966s</div><div class="log-info">[15:18:31] Processing My Summary tab...</div><div class="log-info">[15:18:31] Clicking on My Summary tab...</div><div class="log-info">[15:18:31] Already on My Summary tab, no need to click</div><div class="log-info">[15:18:31] Tab check took: 0.011s</div><div class="log-info">[15:18:31] Scraping fee information from My Summary tab...</div><div class="log-info">[15:18:32] Looking for fee information using direct search...</div><div class="log-info">[15:18:32] No fees found with direct search, trying targeted approach...</div><div class="log-info">[15:18:34] Found 'Updates' section with secondary selector</div><div class="log-info">[15:18:34] Found 'Updates' section successfully</div><div class="log-info">[15:19:04] Found 0 update blocks (limited for performance)</div><div class="log-info">[15:19:04] No fees found in Updates section, using direct JavaScript extraction...</div><div class="log-info">[15:19:04] Found recovery date: 25-05-01</div><div class="log-info">[15:19:04] Found 7 fee elements via direct JavaScript</div><div class="log-info">[15:19:04] Found generic fee element: Flatbed Fees - $150 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Flatbed Fees - $150 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Fee To Client - $0.00 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Unknown Fee - $0.00 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Unknown Fee - $75 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Unknown Fee - $75 (25-05-01)</div><div class="log-info">[15:19:04] Found generic fee element: Unknown Fee - $75 (25-05-01)</div><div class="log-info">[15:19:04] Found 7 fee entries in My Summary tab</div><div class="log-info">[15:19:04]   - Flatbed Fees: 150 (25-05-01)</div><div class="log-info">[15:19:04]   - Flatbed Fees: 150 (25-05-01)</div><div class="log-info">[15:19:04]   - Fee To Client: 0.00 (25-05-01)</div><div class="log-info">[15:19:04]   - Unknown Fee: 0.00 (25-05-01)</div><div class="log-info">[15:19:04]   - Unknown Fee: 75 (25-05-01)</div><div class="log-info">[15:19:04]   - Unknown Fee: 75 (25-05-01)</div><div class="log-info">[15:19:04]   - Unknown Fee: 75 (25-05-01)</div><div class="log-info">[15:19:04] My Summary tab scraping took: 32.439s</div><div class="log-info">[15:19:04] Processing Updates tab...</div><div class="log-info">[15:19:04] Clicking on Updates tab...</div><div class="log-info">[15:19:35] Found Updates tab with key: 6</div><div class="log-info">[15:19:35] Successfully clicked Updates tab using JavaScript</div><div class="log-info">[15:19:37] Successfully navigated to Updates tab</div><div class="log-info">[15:19:37] Loading all updates - optimized approach...</div><div class="log-info">[15:19:37] Found pagination controls</div><div class="log-info">[15:20:07] Initial number of updates: 0</div><div class="log-info">[15:20:07] Found ALL button by data-page attribute</div><div class="log-info">[15:20:07] Clicked ALL using JavaScript</div><div class="log-info">[15:20:08] Using fast approach for updates loading...</div><div class="log-info">[15:21:08] Current update count: 0</div><div class="log-info">[15:21:08] Update count stable at 0, proceeding anyway</div><div class="log-info">[15:21:08] Reached maximum wait time. Proceeding with currently loaded updates.</div><div class="log-info">[15:21:08] Load all updates operation took: 91.116s</div><div class="log-info">[15:21:08] Updates loading completed</div><div class="log-info">[15:21:08] Scraping updates...</div><div class="log-info">[15:21:08] Checking for Last Two Updates section...</div><div class="log-info">[15:21:08] No updates found in Last Two Updates section, proceeding with main updates tab</div><div class="log-info">[15:21:08] Scraped 77 updates using JavaScript</div><div class="log-info">[15:21:08] Scraped 77 updates</div><div class="log-info">[15:21:08] Extracting fee information from updates...</div><div class="log-info">[15:21:08] Fee information extraction took: 0.008s</div><div class="log-info">[15:21:08] Analyzed 50 updates and found 0 fee-related updates</div><div class="log-warning">[15:21:08] No fees extracted despite having updates - possible pattern mismatch</div><div class="log-info">[15:21:08] Sample update 0 (type: ): My Summary
+                                    Print Order
+                    
+                                    Photos / Docs
+                    
+                                    Release
+     </div><div class="log-info">[15:21:08] Sample update 1 (type: ): Name
+							   Debtor's Home
+							
+
+															
+									Address
+									
+										&nbsp;
+										2753 Drumlanrig St
+										Henderson, NV 89044-0244
+									
+								
+								
+									County</div><div class="log-info">[15:21:08] Sample update 2 (type: ): Name
+							   &lt;empty&gt;
+							
+
+															
+									Address
+									
+										&nbsp;
+										8302 W Desert Inn Rd
+										Las Vegas, NV 89117
+									
+								
+								
+									County
+								</div><div class="log-info">[15:21:08] Fee extraction took: 0.014s</div><div class="log-info">[15:21:08] Total scrape_updates_tab operation took: 0.249s</div><div class="log-info">[15:21:08] Combining fee information from My Summary, Updates, and Key Fee tabs...</div><div class="log-info">[15:21:08] Page Key Fees: 11</div><div class="log-info">[15:21:08] My Summary fees: 7, Updates fees: 0, Key Fees: 11</div><div class="log-info">[15:21:08] Combined fee updates: 18</div><div class="log-info">[15:21:08] Generating fees table from combined sources: 18 total fees</div><div class="log-info">[15:21:08] Generating fees table - implementing three-table structure as per CLAUDE.md...</div><div class="log-info">[15:21:08] Looking up repo fee information for client=Primeritus- IBEAM, lienholder=America's Car-Mart Loss Recovery Branch, fee_type=Involuntary Repo</div><div class="log-info">[15:21:08] Looking up repo fee for: Client="Primeritus- IBEAM", Lienholder="America's Car-Mart Loss Recovery Branch", FeeType="Involuntary Repo"</div><div class="log-info">[15:21:11] Getting foreign keys from names...</div><div class="log-warning">[15:21:11] Lienholder 'America's Car-Mart Loss Recovery Branch' not found in database</div><div class="log-info">[15:21:12] No specific record found. Looking up 'Standard' lienholder as fallback...</div><div class="log-info">[15:21:12] Executing FALLBACK LOOKUP query with parameters: 70 (int), 201 (int), 1 (int)</div><div class="log-info">[15:21:12] Found fallback fee using 'Standard' lienholder</div><div class="log-info">[15:21:13] Found repo fee in database: $315.00</div><div class="log-info">[15:21:13] Note: Lienholder 'America's Car-Mart Loss Recovery Branch' specific fee not found. Using Standard amount.</div><div class="log-info">[15:21:13] Processing 19 total fees: 7 from My Summary, 11 from Updates, and 1 from Database</div><div class="log-info">[15:21:13] Matched predefined category (exact match): original='Involuntary Repo', matched='Involuntary Repo'</div><div class="log-info">[15:21:13] Database fee excluded from tables per CLAUDE.md: $315.00 - Involuntary Repo</div><div class="log-info">[15:21:13] Matched predefined category (exact match): original='Flatbed Fees', matched='Flatbed Fees'</div><div class="log-info">[15:21:13] Added predefined category fee to Table 1: $150.00 - Flatbed Fees</div><div class="log-info">[15:21:13] Matched predefined category (exact match): original='Flatbed Fees', matched='Flatbed Fees'</div><div class="log-info">[15:21:13] Added predefined category fee to Table 1: $150.00 - Flatbed Fees</div><div class="log-info">[15:21:13] Added other category fee to Table 3: $75.00 - Unknown Fee</div><div class="log-info">[15:21:13] Skipping duplicate fee: $75.00 from My Summary (category: Unknown Fee)</div><div class="log-info">[15:21:13] Added other category fee to Table 3: $75.00 - Unknown Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $150.00 - Keys Fee</div><div class="log-info">[15:21:13] Added keys fee to Table 2: $75.00 - Keys Fee</div><div class="log-info">[15:21:13] Generated fee tables: 2 predefined fees, 9 keys fees, 2 other fees</div><div class="log-info">[15:21:13] Sample predefined fee: {'date': '25-05-01', 'amount': '$150.00', 'type': 'My Summary Fee', 'approver': '', 'referenceSentence': 'DISCLAIMERS\n\nFor Status: Repossessed\n- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...\n                            (more)', 'approved': 'Yes', 'category': 'Flatbed Fees', 'source': 'My Summary', 'originalCategory': 'Flatbed Fees', 'matched': True, 'matchedAs': 'Pre-approved Non-Repo'}</div><div class="log-info">[15:21:13] Sample keys fee: {'date': '05/13/2025', 'amount': '$150.00', 'type': 'Push to Start Key Fee', 'approver': 'System', 'referenceSentence': 't"&gt;DISCLAIMERS\n\nFor Status: Repossessed\n- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...', 'approved': 'Likely', 'category': 'Keys Fee', 'source': 'Updates', 'originalCategory': 'Keys Fee', 'matched': True, 'matchedAs': 'Keys Fee'}</div><div class="log-info">[15:21:13] Sample other fee: {'date': '25-05-01', 'amount': '$75.00', 'type': 'My Summary Fee', 'approver': '', 'referenceSentence': 'Details\n\t\t\t\t\t\t\t\t  $75 transport fee!', 'approved': 'Yes', 'category': 'Unknown Fee', 'source': 'My Summary', 'originalCategory': 'Unknown Fee', 'matched': False, 'matchedAs': 'Unmatched'}</div><div class="log-info">[15:21:13] Fee table generation took: 4.412s</div><div class="log-info">[15:21:13] Saving data to disk...</div><div class="log-info">[15:21:13] Saving raw update data...</div><div class="log-info">[15:21:13] Saving My Summary fee data...</div><div class="log-info">[15:21:13] Saving extracted fee data...</div><div class="log-info">[15:21:13] Saving fee table with 13 fees (4 from My Summary)</div><div class="log-info">[15:21:13] Generating HTML report...</div><div class="log-info">[15:21:13] Generating HTML report with three-table structure...</div><div class="log-info">[15:21:13] HTML report generation took: 0.001s</div><div class="log-info">[15:21:13] Split fees into categories: Predefined: 4, Keys: 9, Other: 0</div><div class="log-info">[15:21:13] Organized fees by individual categories: 3 unique categories</div><div class="log-info">[15:21:13]   - Flatbed Fees (predefined): 2 fees</div><div class="log-info">[15:21:13]   - Unknown Fee (other): 2 fees</div><div class="log-info">[15:21:13]   - Keys Fee (keys): 9 fees</div><div class="log-info">[15:21:13] Final fee counts - Total: 13, Predefined: 4, Keys: 9, Other: 0</div><div class="log-info">[15:21:13] Sample predefined fee: {'date': '25-05-01', 'amount': '$150.00', 'type': 'My Summary Fee', 'approver': '', 'referenceSentence': 'DISCLAIMERS\n\nFor Status: Repossessed\n- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...\n                            (more)', 'approved': 'Yes', 'category': 'Flatbed Fees', 'source': 'My Summary', 'originalCategory': 'Flatbed Fees', 'matched': True, 'matchedAs': 'Pre-approved Non-Repo', 'categoryType': 'predefined'}</div><div class="log-info">[15:21:13] Sample keys fee: {'date': '05/13/2025', 'amount': '$150.00', 'type': 'Push to Start Key Fee', 'approver': 'System', 'referenceSentence': 't"&gt;DISCLAIMERS\n\nFor Status: Repossessed\n- Flatbed Fee Pre-Approved $150 CONTINGENT on pictures...', 'approved': 'Likely', 'category': 'Keys Fee', 'source': 'Updates', 'originalCategory': 'Keys Fee', 'matched': True, 'matchedAs': 'Keys Fee', 'categoryType': 'keys'}</div><div class="log-info">[15:21:13] Scrape completed successfully for case ID: 2168975234</div><div class="log-info">[15:21:13] Total scraping process took: 184.849s</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="progress">
+              <div id="progress-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%;" aria-valuenow="75"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4">
+        <div class="card">
+          <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Case Information</h4>
+          </div>
+          <div class="card-body">
+            <div class="row case-info-cards">
+              <div class="col-md-3">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Client Name</h5>
+                    <p class="card-text" id="client-name">Primeritus- IBEAM</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Lien Holder</h5>
+                    <p class="card-text" id="lien-holder-name">America's Car-Mart Loss Recovery Branch</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card stats-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Repo Type</h5>
+                    <p class="card-text" id="repo-type">Involuntary Repo</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" id="database-fee-card-container" style="display: none;">
+                <div class="card stats-card database-fee-card">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Involuntary Repo Fee</h5>
+                    <p class="card-text" id="database-fee">$315.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category-specific tables will be inserted here dynamically -->
+      <div class="col-12 mb-4">
+        <div id="category-tables-container">
+          <!-- Category tables will be inserted here dynamically -->
+        </div>
+
+        <div class="mt-4">
+          <div class="d-flex justify-content-between">
+            <h5>Download Results</h5>
+          </div>
+          <div class="btn-group mt-2" id="download-links"><a href="/downloads/all-updates-2168975234-2025-05-13-15-21-13.json" class="btn btn-primary me-2" download="all-updates-2168975234-2025-05-13-15-21-13.json">Raw Updates (JSON)</a><a href="/downloads/my-summary-fees-2168975234-2025-05-13-15-21-13.json" class="btn btn-primary me-2" download="my-summary-fees-2168975234-2025-05-13-15-21-13.json">My Summary Fees (JSON)</a><a href="/downloads/fee-table-2168975234-2025-05-13-15-21-13.json" class="btn btn-primary me-2" download="fee-table-2168975234-2025-05-13-15-21-13.json">Fee Table (JSON)</a><a href="/downloads/report-2168975234-2025-05-13-15-21-13.html" class="btn btn-primary me-2" download="report-2168975234-2025-05-13-15-21-13.html">HTML Report</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/js/dashboard.js"></script>
+
+<div data-lastpass-root="" style="position: absolute !important; top: 0px !important; left: 0px !important; height: 0px !important; width: 0px !important;"></div></body></html>

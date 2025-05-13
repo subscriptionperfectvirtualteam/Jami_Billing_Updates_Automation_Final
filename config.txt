@@ -1,0 +1,4 @@
+Server - pvtserver.database.windows.net
+USername - pvtadmin@perfectvirtualteam.com@pvtserver
+Password - 	Sunny$hill9
+Database - RDN_Billing

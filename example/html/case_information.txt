@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header bg-info text-white">
+      <h4 class="mb-0">Case Information</h4>
+    </div>
+    <div class="card-body">
+      <div class="row case-info-cards">
+        <div class="col-md-3">
+          <div class="card stats-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Client Name</h5>
+              <p class="card-text" id="client-name">Westlake Services</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card stats-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Lien Holder</h5>
+              <p class="card-text" id="lien-holder-name">Westlake Financial Services</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card stats-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Repo Type</h5>
+              <p class="card-text" id="repo-type">Involuntary Repo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3" id="database-fee-card-container" style="display: none;">
+          <div class="card stats-card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Involuntary Repo Fee</h5>
+              <p class="card-text" id="database-fee">$0.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

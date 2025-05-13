@@ -1,0 +1,32 @@
+[
+  {
+    "COLUMN_NAME": "fd_id",
+    "DATA_TYPE": "int",
+    "CHARACTER_MAXIMUM_LENGTH": null,
+    "IS_NULLABLE": "NO"
+  },
+  {
+    "COLUMN_NAME": "client_id",
+    "DATA_TYPE": "int",
+    "CHARACTER_MAXIMUM_LENGTH": null,
+    "IS_NULLABLE": "NO"
+  },
+  {
+    "COLUMN_NAME": "lh_id",
+    "DATA_TYPE": "int",
+    "CHARACTER_MAXIMUM_LENGTH": null,
+    "IS_NULLABLE": "NO"
+  },
+  {
+    "COLUMN_NAME": "ft_id",
+    "DATA_TYPE": "int",
+    "CHARACTER_MAXIMUM_LENGTH": null,
+    "IS_NULLABLE": "NO"
+  },
+  {
+    "COLUMN_NAME": "amount",
+    "DATA_TYPE": "decimal",
+    "CHARACTER_MAXIMUM_LENGTH": null,
+    "IS_NULLABLE": "NO"
+  }
+]
