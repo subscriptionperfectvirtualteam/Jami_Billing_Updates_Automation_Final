@@ -155,7 +155,7 @@ config = {
 
     # Web portal settings
     "web_portal": {
-        "port": 5252,
+        "port": 1436,
         "open_browser": True
     },
 
