@@ -7,3 +7,4 @@ lxml==4.9.3
 python-engineio==4.7.1
 python-socketio==5.9.0
 streamlit
+pyodbc
